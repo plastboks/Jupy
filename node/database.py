@@ -39,10 +39,9 @@ class sqLite():
 
 
   def insert(self, dName, dLoc, dType, dData):
-    ts = str(datetime.now())
     try:
       cur = self.con.cursor()
-      cur.execute("insert into node (timestamp, name, loc, type, data) values ('%s', '%s', '%s', '%s', %f)" % (ts, dName, dLoc, dType, dData))
+      cur.execute("insert into node (name, loc, type, data) values ('%s', '%s', '%s', %.3f)" % (dName, dLoc, dType, dData))
       self.con.commit()
     except Exception as e:
       print("Error %s" % e.args[0])

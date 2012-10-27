@@ -28,9 +28,10 @@ dLoc = "Garage"
 dType = "Temperature"
 
 t = sensor.temperature(device)
-d = database.sqLite(dbFile)
 
 while(1):
+
+  d = database.sqLite(dbFile)
 
   temp = t.parseTempData(t.getTempData())
   d.insert(dName, dLoc, dType, temp)
