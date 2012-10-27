@@ -29,8 +29,8 @@ class index:
 
   def GET(self):
     last10Temps = db.select('node', limit=10, order="id DESC")
-    lastDayTemps = db.select('node', limit=144, order="id ASC")
-    return render.index(last10Temps, lastDayTemps)
+    lastDayTemps = db.select('node', limit=144, order="id DESC").list()
+    return render.index(last10Temps, lastDayTemps[::-1])
 
 
 if __name__ == "__main__":
