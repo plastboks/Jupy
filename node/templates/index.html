@@ -1,33 +1,24 @@
-$def with (last10Temps, lastDayTemps)
+$def with (currentTemp, last8HTemps, last48HTemps, lastWeekTemps)
 
-<h1>Jupy</h1>
-<h2>Last 10 entries</h2>
-<table>
-  <thead>
-    <tr>
-      <th>DateTime</th>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Type</th>
-      <th>Data</th>
-    </tr>
-  </thead>
-  <tbody>
-$for temp in last10Temps:
-    <tr>
-      <td>$temp.timestamp </td>
-      <td>$temp.name </td>
-      <td>$temp.loc</td>
-      <td>$temp.type</td>
-      <td>$temp.data</td>
-    </tr>
-  </tbody>
-</table>
+<h1>Jupy </h1>
+<h2>Current temp for: $currentTemp.name ($currentTemp.loc) $currentTemp.data</h2>
 
-<ul class="hidden" id="lastDayTemps">
-$for temp in lastDayTemps:
-  <li data-value="$temp.data">$temp.data</li>
+<ul class="hidden" id="last8HTemps">
+$for temp in last8HTemps:
+  <li data-time="$temp.timestamp" data-value="$temp.data">$temp.data</li>
 </ul>
 
-<div id="chart1">
-</div>
+<ul class="hidden" id="last48HTemps">
+$for temp in last48HTemps:
+  <li data-time="$temp.timestamp" data-value="$temp.data">$temp.data</li>
+</ul>
+
+<ul class="hidden" id="lastWeekTemps">
+$for temp in lastWeekTemps:
+  <li data-time="$temp.timestamp" data-value="$temp.data">$temp.data</li>
+</ul>
+
+
+<div class="chart" id="chart0"></div>
+<div class="chart" id="chart1"></div>
+<div class="chart" id="chart2"></div>
