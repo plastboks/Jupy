@@ -17,7 +17,7 @@ $(document).ready(function(){
   var lastWeekVaues = parseList("#lastWeekTemps li");
 
   var plot0 = $.jqplot ('chart0', [last8HTemps], {
-    title: 'Temperatures last 48 hours',
+    title: 'Temperatures last 8 hours',
     seriesDefaults: {showMarker:false},
     axesDefaults: {
       labelRenderer: $.jqplot.CanvasAxisLabelRenderer
