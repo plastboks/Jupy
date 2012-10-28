@@ -15,27 +15,23 @@
 #
 
 import sensor
-#import daemon
 import database
 import time
+import config
 
-#only temporarily stored here for testing...
-device = "/sys/bus/w1/devices/28-0000031e7d42/w1_slave"
-dbFile = "node.db"
+c = config.config("config.json")
+c.read()
 
-dName = "Home"
-dLoc = "Garage"
-dType = "Temperature"
-
-t = sensor.temperature(device)
 
 while(1):
 
-  d = database.sqLite(dbFile)
+  d = database.sqLite(c.data['config']['database']['file'])
 
-  temp = t.parseTempData(t.getTempData())
-  d.insert(dName, dLoc, dType, temp)
+  for s in c.data['config']['sensor']:
+    t = sensor.temperature(s['device'])
+    temp = t.parseTempData(t.getTempData())
+    d.insert(s['name'], s['loc'], s['type'], temp)
+
   d.close()
-  
-  time.sleep(600)
+  time.sleep(c.data['config']['options']['interval'])
 

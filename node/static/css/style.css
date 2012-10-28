@@ -1,0 +1,19 @@
+/* Style for Jupy Node */
+
+body {
+  width: 800px;
+  margin: 0 auto;
+}
+
+table {
+  width: 800px;
+  margin-bottom: 30px;
+}
+
+table tr td {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

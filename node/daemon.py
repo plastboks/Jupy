@@ -14,7 +14,3 @@
 # @description: Daemon app for logging temprature and saving to database.
 #
 
-class run():
-
-  def __init__(self):
-    print("do nothing for now...")

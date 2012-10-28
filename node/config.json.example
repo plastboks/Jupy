@@ -1,0 +1,16 @@
+{ "config" : {
+  "database" : {
+    "file" : "", 
+  },
+  "sensor" : {
+    "0" : {
+      "name" : "",
+      "loc" : "",
+      "type" : "",
+      "intervals" : "",
+    },
+  },
+  "options" : {
+    "timezone" : "",
+  }
+}}
