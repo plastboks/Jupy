@@ -1,16 +1,17 @@
 { "config" : {
   "database" : {
-    "file" : "", 
+    "file" : ""
   },
-  "sensor" : {
-    "0" : {
+  "sensor" : [
+    {
+      "device" : "",
       "name" : "",
       "loc" : "",
-      "type" : "",
-      "intervals" : "",
-    },
-  },
+      "type" : ""
+    }
+  ],
   "options" : {
-    "timezone" : "",
+    "timezone" : 1,
+    "interval" : 600
   }
 }}
