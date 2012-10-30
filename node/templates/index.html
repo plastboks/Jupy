@@ -2,7 +2,7 @@ $def with (currentTemp, last8HTemps, last48HTemps, lastWeekTemps)
 
 <h1>Jupy </h1>
 <h2>Current temp for: $currentTemp.name ($currentTemp.loc) $currentTemp.data</h2>
-
+<h3>Last temp reading: $currentTemp.timestamp</h3>
 <ul class="hidden" id="last8HTemps">
 $for temp in last8HTemps:
   <li data-time="$temp.timestamp" data-value="$temp.data">$temp.data</li>

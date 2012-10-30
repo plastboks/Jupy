@@ -37,6 +37,13 @@ h2 {
   font-weight: 100;
 }
 
+h3 {
+  color: #676767;
+  font-family: 'Lobster', cursive;
+  font-size: 0.9em;
+  font-weight: 100;
+}
+
 table {
   width: 800px;
   margin-bottom: 30px;

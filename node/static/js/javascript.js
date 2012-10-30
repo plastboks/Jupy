@@ -12,7 +12,17 @@ $(document).ready(function(){
     return thisList;
   }
 
-  var last8HTemps = parseList("#last8HTemps li");
+  function parseListDate(list) {
+    thisList = []
+    $(list).each(function(){
+      data = $(this).attr("data-value");
+      timestamp = $(this).attr("data-time");
+      thisList.push([timestamp, parseFloat(data)]);
+    });
+    return thisList;
+  }
+
+  var last8HTemps = parseListDate("#last8HTemps li");
   var last48HTemps = parseList("#last48HTemps li");
   var lastWeekVaues = parseList("#lastWeekTemps li");
 
@@ -24,6 +34,8 @@ $(document).ready(function(){
     },
     axes: {
       xaxis: {
+        renderer: $.jqplot.DateAxisRenderer, 
+        tickOptions: {formatString: '%H:%M'},
         label: "Time",
         pad: 0
       },
