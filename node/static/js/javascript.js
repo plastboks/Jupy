@@ -12,6 +12,30 @@ $(document).ready(function(){
     return thisList;
   }
 
+  function callback(data) {
+    return data;
+  }
+
+  function getTemp(hours, days, months) {
+    $.ajax({
+      url: '/get/temp',
+      dataType: 'json',
+      type: 'GET',
+      data: {
+        hours: hours,
+        days: days,
+        months : months
+      },
+      success: function(response) {
+        return response;
+      },
+      error: function() {
+        return false;
+      }
+    });
+  }
+
+
   var last8HValues = parseList("#last8HTemps li");
   var last48HValues = parseList("#last48HTemps li");
   var lastWeekVaues = parseList("#lastWeekTemps li");
