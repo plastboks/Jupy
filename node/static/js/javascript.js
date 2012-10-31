@@ -7,26 +7,17 @@ $(document).ready(function(){
     $(list).each(function(){
       data = $(this).attr("data-value");
       timestamp = $(this).attr("data-time");
-      thisList.push(parseFloat(data));
-    });
-    return thisList;
-  }
-
-  function parseListDate(list) {
-    thisList = []
-    $(list).each(function(){
-      data = $(this).attr("data-value");
-      timestamp = $(this).attr("data-time");
       thisList.push([timestamp, parseFloat(data)]);
     });
     return thisList;
   }
 
-  var last8HTemps = parseListDate("#last8HTemps li");
-  var last48HTemps = parseListDate("#last48HTemps li");
-  var lastWeekVaues = parseListDate("#lastWeekTemps li");
+  var last8HValues = parseList("#last8HTemps li");
+  var last48HValues = parseList("#last48HTemps li");
+  var lastWeekVaues = parseList("#lastWeekTemps li");
+  var lastMonthValues = parseList("#lastMonthTemps li");
 
-  var plot0 = $.jqplot ('chart0', [last8HTemps], {
+  var plot0 = $.jqplot ('chart0', [last8HValues], {
     title: 'Temperatures last 8 hours',
     seriesDefaults: {showMarker:false},
     axesDefaults: {
@@ -40,12 +31,12 @@ $(document).ready(function(){
         pad: 0
       },
       yaxis: {
-        label: "Temperature"
+        label: "Celsius"
       }
     }
   });
 
-  var plot1 = $.jqplot ('chart1', [last48HTemps], {
+  var plot1 = $.jqplot ('chart1', [last48HValues], {
     title: 'Temperatures last 48 hours',
     seriesDefaults: {showMarker:false},
     axesDefaults: {
@@ -59,7 +50,7 @@ $(document).ready(function(){
         pad: 0
       },
       yaxis: {
-        label: "Temperature"
+        label: "Celsius"
       }
     }
   });
@@ -74,12 +65,33 @@ $(document).ready(function(){
       xaxis: {
         renderer: $.jqplot.DateAxisRenderer, 
         tickOptions: {formatString: '%y-%m-%d'},
-        label: "Time",
+        label: "Date",
         pad: 0
       },
       yaxis: {
-        label: "Temperature"
+        label: "Celsius"
       }
     }
   });
+
+  var plot3 = $.jqplot ('chart3', [lastWeekVaues], {
+    title: 'Temperatures last month',
+    seriesDefaults: {showMarker:false},
+    axesDefaults: {
+      labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+    },
+    axes: {
+      xaxis: {
+        renderer: $.jqplot.DateAxisRenderer, 
+        tickOptions: {formatString: '%y-%m-%d'},
+        label: "Date",
+        pad: 0
+      },
+      yaxis: {
+        label: "Celsius"
+      }
+    }
+  });
+
+
 });

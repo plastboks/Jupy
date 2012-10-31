@@ -1,4 +1,4 @@
-$def with (currentTemp, last8HTemps, last48HTemps, lastWeekTemps)
+$def with (currentTemp, last8HTemps, last48HTemps, lastWeekTemps, lastMonthTemps)
 
 <h1>Jupy </h1>
 <h2>Current temp for: $currentTemp.name ($currentTemp.loc) $currentTemp.data</h2>
@@ -18,7 +18,13 @@ $for temp in lastWeekTemps:
   <li data-time="$temp.timestamp" data-value="$temp.data">$temp.data</li>
 </ul>
 
+<ul class="hidden" id="lastMonthTemps">
+$for temp in lastMonthTemps:
+  <li data-time="$temp.timestamp" data-value="$temp.data">$temp.data</li>
+</ul>
+
 
 <div class="chart" id="chart0"></div>
 <div class="chart" id="chart1"></div>
 <div class="chart" id="chart2"></div>
+<div class="chart" id="chart3"></div>

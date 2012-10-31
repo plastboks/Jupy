@@ -36,8 +36,9 @@ class index:
     last8HTemps = db.select('node', limit=48, order="id DESC").list()
     last48HTemps = db.select('node', limit=288, order="id DESC").list()
     lastWeekTemps = db.select('node', limit=1008, order="id DESC").list()
-    
-    return render.index(currentTemp[0], last8HTemps[::-1], last48HTemps[::-1], lastWeekTemps[::-1])
+    lastMonthTemps = db.select('node', limit=31248, order="id DESC").list()
+
+    return render.index(currentTemp[0], last8HTemps[::-1], last48HTemps[::-1], lastWeekTemps[::-1], lastMonthTemps[::-1])
 
 
 if __name__ == "__main__":
