@@ -37,15 +37,6 @@ class index:
     last48HTemps = db.select('node', limit=288, order="id DESC").list()
     lastWeekTemps = db.select('node', limit=1008, order="id DESC").list()
     
-    for i, row in enumerate(last8HTemps):
-      last8HTemps[i]['timestamp'] = ':'.join(row['timestamp'].split(' ')[1].split(':')[:2])
-
-    for i, row in enumerate(last48HTemps):
-      last48HTemps[i]['timestamp'] = ':'.join(row['timestamp'].split(' ')[1].split(':')[:2])
-
-    for i, row in enumerate(lastWeekTemps):
-      lastWeekTemps[i]['timestamp'] = '-'.join(row['timestamp'].split(' ')[0].split('-')[-2:])
-
     return render.index(currentTemp[0], last8HTemps[::-1], last48HTemps[::-1], lastWeekTemps[::-1])
 
 

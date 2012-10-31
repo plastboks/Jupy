@@ -23,8 +23,8 @@ $(document).ready(function(){
   }
 
   var last8HTemps = parseListDate("#last8HTemps li");
-  var last48HTemps = parseList("#last48HTemps li");
-  var lastWeekVaues = parseList("#lastWeekTemps li");
+  var last48HTemps = parseListDate("#last48HTemps li");
+  var lastWeekVaues = parseListDate("#lastWeekTemps li");
 
   var plot0 = $.jqplot ('chart0', [last8HTemps], {
     title: 'Temperatures last 8 hours',
@@ -53,6 +53,8 @@ $(document).ready(function(){
     },
     axes: {
       xaxis: {
+        renderer: $.jqplot.DateAxisRenderer, 
+        tickOptions: {formatString: '%H:%M'},
         label: "Time",
         pad: 0
       },
@@ -70,6 +72,8 @@ $(document).ready(function(){
     },
     axes: {
       xaxis: {
+        renderer: $.jqplot.DateAxisRenderer, 
+        tickOptions: {formatString: '%y-%m-%d'},
         label: "Time",
         pad: 0
       },
