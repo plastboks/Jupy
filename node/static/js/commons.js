@@ -19,6 +19,7 @@ $(document).ready(function(){
     'hours': 8,
     'days': 0,
     'months': 0,
+    'res': 1,
     'element': 'chart0',
     'title': 'Temperatures last 8 hours',
     'TDformat': '%H:%M'
@@ -28,6 +29,7 @@ $(document).ready(function(){
     'hours': 48,
     'days': 0,
     'months': 0,
+    'res': 1,
     'element': 'chart1',
     'title': 'Temperatures last 48 hours',
     'TDformat': '%H:%M'
@@ -37,6 +39,7 @@ $(document).ready(function(){
     'hours': 0,
     'days': 7,
     'months': 0,
+    'res': 3,
     'element': 'chart2',
     'title': 'Temperatures last 7 days',
     'TDformat': '%y-%m-%d'
@@ -46,6 +49,7 @@ $(document).ready(function(){
     'hours': 0,
     'days': 0,
     'months': 1,
+    'res': 6,
     'element': 'chart3',
     'title': 'Temperatures last month',
     'TDformat': '%y-%m-%d'

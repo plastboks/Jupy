@@ -13,18 +13,7 @@
   */
 
 
-function parseList(list) {
-  thisList = []
-  $(list).each(function(){
-    data = $(this).attr("data-value");
-    timestamp = $(this).attr("data-time");
-    thisList.push([timestamp, parseFloat(data)]);
-  });
-  return thisList;
-}
-
-
-function getData(hours, days, months, callback) {
+function getData(hours, days, months, res, callback) {
   $.ajax({
     url: '/get/temp',
     dataType: 'json',
@@ -32,7 +21,8 @@ function getData(hours, days, months, callback) {
     data: {
       hours: hours,
       days: days,
-      months : months
+      months : months,
+      res: res
     },
     success: function(response) {
       callback(response);
@@ -45,7 +35,7 @@ function getData(hours, days, months, callback) {
 
 
 function drawPlot(data) {
-  getData(data['hours'], data['days'], data['months'], function(json){
+  getData(data['hours'], data['days'], data['months'], data['res'], function(json){
     $.jqplot (data['element'], [json], {
       title: data['title'],
       seriesDefaults: {showMarker:false},

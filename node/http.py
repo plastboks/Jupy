@@ -52,14 +52,14 @@ class gettemp:
   def temp(self):
     interval = c.data['config']['options']['interval']
     tConfig = c.data['config']['options']['timezone']
-    i = web.input(hours=0, days=0, months=0)
+    i = web.input(hours=0, days=0, months=0, res=1)
 
     try:
       count = ((int(i.hours) * 3600) / interval) + ((int(i.days) * (24 * 3600)) / interval) + ((int(i.months) * ((24 * 3600) * (31))) / interval)
     except ValueError as e:
       return False
  
-    query = db.select('node', limit=count, order="id DESC").list()
+    query = db.select('node', where='id %% %i = 0' % (int(i.res)), limit=count, order="id DESC").list()
     return json.dumps([[t.hours(entry.timestamp, tConfig), entry.data] for entry in query[::-1]])
 
 
