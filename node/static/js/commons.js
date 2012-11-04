@@ -16,12 +16,12 @@
 $(document).ready(function(){
 
   drawPlot({
-    'hours': 8,
+    'hours': 12,
     'days': 0,
     'months': 0,
     'res': 1,
     'element': 'chart0',
-    'title': 'Temperatures last 8 hours',
+    'title': 'Temperatures last 12 hours',
     'TDformat': '%H:%M'
   });
 
@@ -59,7 +59,7 @@ $(document).ready(function(){
     'hours': 0,
     'days': 0,
     'months': 6,
-    'res': 18,
+    'res': 16,
     'element': 'chart4',
     'title': 'Temperatures last 6 months',
     'TDformat': '%Y-%m'

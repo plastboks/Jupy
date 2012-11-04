@@ -57,10 +57,12 @@ class gettemp:
     try:
       count = ((int(i.hours) * 3600) / interval) + ((int(i.days) * (24 * 3600)) / interval) + ((int(i.months) * ((24 * 3600) * (31))) / interval)
     except ValueError as e:
+      print(e)
       return False
- 
-    query = db.select('node', where='id %% %i = 0' % (int(i.res)), limit=count, order="id DESC").list()
-    return json.dumps([[t.hours(entry.timestamp, tConfig), entry.data] for entry in query[::-1]])
+    
+    query = db.query('SELECT datetime(timestamp, "localtime") AS "t", data AS "d" FROM node WHERE id % $res = 0 ORDER BY id DESC LIMIT $lim', vars={"res": int(i.res), "lim": count} ).list();
+    output = json.dumps([[r.t, r.d] for r in query[::-1]]) 
+    return output 
 
 
 if __name__ == "__main__":
