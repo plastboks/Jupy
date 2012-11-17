@@ -18,6 +18,9 @@ import web
 import config
 import json
 import timezone
+import datetime
+import time
+
 
 c = config.config('config.json')
 c.read()
@@ -52,15 +55,17 @@ class gettemp:
   def temp(self):
     interval = c.data['config']['options']['interval']
     tConfig = c.data['config']['options']['timezone']
-    i = web.input(hours=0, days=0, months=0, res=1)
+    inputTF = '%Y-%m-%dT%H:%M:%S.%fZ'
+    outputTF = '%Y-%m-%d %H:%M:%S'
+    i = web.input(dateFrom=0, dateTo=0, res=1)
 
-    try:
-      count = ((int(i.hours) * 3600) / interval) + ((int(i.days) * (24 * 3600)) / interval) + ((int(i.months) * ((24 * 3600) * (31))) / interval)
-    except ValueError as e:
-      print(e)
-      return False
+    fd = datetime.datetime.fromtimestamp(time.mktime(time.strptime(i.dateFrom, inputTF)))
+    td = datetime.datetime.fromtimestamp(time.mktime(time.strptime(i.dateTo, inputTF)))
+    fromDate = fd.strftime(outputTF)
+    toDate = td.strftime(outputTF)
+
+    query = db.query('SELECT datetime(timestamp, "localtime") AS "t", data AS "d" FROM node WHERE timestamp BETWEEN $fd AND $td AND id % $res = 0 ORDER BY id DESC', vars = {"fd": fromDate, "td" : toDate, "res" : int(i.res)}).list()
     
-    query = db.query('SELECT datetime(timestamp, "localtime") AS "t", data AS "d" FROM node WHERE id % $res = 0 ORDER BY id DESC LIMIT $lim', vars={"res": int(i.res), "lim": count} ).list();
     output = json.dumps([[r.t, r.d] for r in query[::-1]]) 
     return output 
 

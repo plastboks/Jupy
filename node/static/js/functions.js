@@ -13,15 +13,33 @@
   */
 
 
-function getData(hours, days, months, res, callback) {
+function dateCalc(from, to) {
+  if (to == 'now') {
+    var now = new Date();
+    var dayOfThisMonth = now.getDate();
+    var toDate = now.toJSON();
+    var fd = new Date(now.setDate(dayOfThisMonth - from));
+    var fromDate = fd.toJSON();
+    return [fromDate, toDate];
+  } else {
+    fd = new Date(from);
+    fromDate = fd.toJSON();
+    td = new Date(to);
+    toDate = td.toJSON();
+    return [fromData, toDate];
+  }
+}
+
+
+
+function getData(from, to, res, callback) {
   $.ajax({
     url: '/get/temp',
     dataType: 'json',
     type: 'GET',
     data: {
-      hours: hours,
-      days: days,
-      months : months,
+      dateFrom : from,
+      dateTo : to,
       res: res
     },
     success: function(response) {
@@ -35,7 +53,8 @@ function getData(hours, days, months, res, callback) {
 
 
 function drawPlot(data) {
-  getData(data['hours'], data['days'], data['months'], data['res'], function(json){
+  dates = dateCalc(data['from'], data['to']);
+  getData(dates[0], dates[1], data['res'], function(json){
     $.jqplot (data['element'], [json], {
       title: data['title'],
       seriesDefaults: {showMarker:false},

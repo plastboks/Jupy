@@ -16,52 +16,47 @@
 $(document).ready(function(){
 
   drawPlot({
-    'hours': 12,
-    'days': 0,
-    'months': 0,
+    'from' : 1,
+    'to' : 'now',
     'res': 1,
     'element': 'chart0',
-    'title': 'Temperatures last 12 hours',
+    'title': 'Temperatures last day',
     'TDformat': '%H:%M'
   });
 
   drawPlot({
-    'hours': 48,
-    'days': 0,
-    'months': 0,
+    'from' : 4,
+    'to' : 'now',
     'res': 2,
     'element': 'chart1',
-    'title': 'Temperatures last 48 hours',
+    'title': 'Temperatures last 4 days',
     'TDformat': '%H:%M'
   });
 
   drawPlot({
-    'hours': 0,
-    'days': 7,
-    'months': 0,
+    'from': 14,
+    'to': 'now',
     'res': 4,
     'element': 'chart2',
-    'title': 'Temperatures last 7 days',
+    'title': 'Temperatures last 14 days',
     'TDformat': '%m-%d'
   });
   
   drawPlot({
-    'hours': 0,
-    'days': 0,
-    'months': 1,
+    'from': 60,
+    'to': 'now',
     'res': 8,
     'element': 'chart3',
-    'title': 'Temperatures last month',
+    'title': 'Temperatures 60 days',
     'TDformat': '%m-%d'
   });
   
   drawPlot({
-    'hours': 0,
-    'days': 0,
-    'months': 6,
+    'from': 180,
+    'to': 'now',
     'res': 16,
     'element': 'chart4',
-    'title': 'Temperatures last 6 months',
+    'title': 'Temperatures last 180 days',
     'TDformat': '%Y-%m'
   });
 
