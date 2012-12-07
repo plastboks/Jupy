@@ -15,7 +15,7 @@
 
 $(document).ready(function(){
 
-  drawPlot({
+ drawPlot({
     'from' : 1,
     'to' : 'now',
     'res': 1,

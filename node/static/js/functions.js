@@ -12,6 +12,9 @@
   * 
   */
 
+$.fn.tempPlot function() {
+  
+}
 
 function dateCalc(from, to) {
   if (to == 'now') {
