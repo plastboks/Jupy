@@ -54,7 +54,7 @@ $(document).ready(function(){
   drawPlot({
     'from': 180,
     'to': 'now',
-    'res': 16,
+    'res': 10,
     'element': 'chart4',
     'title': 'Temperatures last 180 days',
     'TDformat': '%Y-%m'
