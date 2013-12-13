@@ -61,6 +61,24 @@ function drawPlot(data) {
       axesDefaults: {
         labelRenderer: $.jqplot.CanvasAxisLabelRenderer
       },
+      series:[
+         {color: '#FFA347',
+          lineWidth: 2,
+          label:'good line'
+         }
+      ],
+      canvasOverlay: {
+        show: true,
+        objects: [
+          {horizontalLine: {
+            name: '0 mark',
+            y: 0,
+            lineWidth: 1,
+            color: 'rgb(140, 150, 255)',
+            shadow: false
+          }}
+        ]
+      },
       axes: {
         xaxis: {
           renderer: $.jqplot.DateAxisRenderer, 
