@@ -25,39 +25,21 @@ $(document).ready(function(){
   });
 
   drawPlot({
-    'from' : 4,
+    'from' : 7,
     'to' : 'now',
-    'res': 2,
+    'res': 4,
     'element': 'chart1',
-    'title': 'Temperatures last 4 days',
+    'title': 'Temperatures last 7 days',
     'TDformat': '%H:%M'
   });
 
   drawPlot({
-    'from': 14,
-    'to': 'now',
-    'res': 4,
-    'element': 'chart2',
-    'title': 'Temperatures last 14 days',
-    'TDformat': '%m-%d'
-  });
-  
-  drawPlot({
-    'from': 60,
-    'to': 'now',
-    'res': 8,
-    'element': 'chart3',
-    'title': 'Temperatures 60 days',
-    'TDformat': '%m-%d'
-  });
-  
-  drawPlot({
-    'from': 180,
+    'from': 28,
     'to': 'now',
     'res': 10,
-    'element': 'chart4',
-    'title': 'Temperatures last 180 days',
-    'TDformat': '%Y-%m'
+    'element': 'chart2',
+    'title': 'Temperatures last 28 days',
+    'TDformat': '%m-%d'
   });
-
+  
 });
