@@ -37,7 +37,11 @@ class temperature():
   def parseTempData(self, data):
     status = data[0].split(' ')[-1].rstrip()
     if (status == "YES"):
-      return float(data[1].split('=', 1)[1].rstrip()) / 1000
+      try: 
+        value = float(data[1].split('=', 1)[1].rstrip()) / 1000
+      except Exception as e:
+        return e
+      return value
     else:
       return "Could not parse data"
 
